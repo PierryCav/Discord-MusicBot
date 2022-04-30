@@ -163,12 +163,12 @@ class DiscordMusicBot extends Client {
       .on("trackStart", async (player, track) => {
         this.SongsPlayed++;
         let TrackStartedEmbed = new MessageEmbed()
-          .setAuthor(`Now playing ♪`, this.botconfig.IconURL)
+          .setAuthor(`・Tocando agora ♪`, https://media.discordapp.net/attachments/964565359753568279/969763761583976518/1495430.png)
           .setThumbnail(player.queue.current.displayThumbnail())
-          .setDescription(`[${track.title}](${track.uri})`)
-          .addField("Requested by", `${track.requester}`, true)
+          .setDescription(`Nome: [${track.title}](${track.uri})`)
+          .addField("Pedido por:", `${track.requester}`, true)
           .addField(
-            "Duration",
+            "Duração:",
             `\`${prettyMilliseconds(track.duration, {
               colonNotation: true,
             })}\``,
@@ -183,7 +183,7 @@ class DiscordMusicBot extends Client {
       })
       .on("queueEnd", (player) => {
         let QueueEmbed = new MessageEmbed()
-          .setAuthor("The queue has ended", this.botconfig.IconURL)
+          .setAuthor("A fila acabou", this.botconfig.IconURL)
           .setColor(this.botconfig.EmbedColor)
           .setTimestamp();
         client.channels.cache.get(player.textChannel).send(QueueEmbed);
@@ -238,11 +238,11 @@ class DiscordMusicBot extends Client {
 
   sendError(Channel, Error) {
     let embed = new MessageEmbed()
-      .setTitle("An error occured")
+      .setTitle("Um erro ocorreu")
       .setColor("RED")
       .setDescription(Error)
       .setFooter(
-        "If you think this as a bug, please report it in the support server!"
+        "Se você acha que isso é um bug, informe-o no servidor de suporte!"
       );
 
     Channel.send(embed);
