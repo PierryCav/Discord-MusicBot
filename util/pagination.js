@@ -2,16 +2,16 @@ module.exports = async (
   msg,
   pages,
   client,
-  emojiList = ["◀️", "⏹️", "▶️"],
+  emojiList = ["<:stopacontra:969760296661041213>", "<:stop:969759878597980180>", "<:play:969760005106569226>"],
   timeout = 120000
 ) => {
-  if (!msg && !msg.channel) throw new Error("Channel is inaccessible.");
-  if (!pages) throw new Error("Pages are not given.");
+  if (!msg && !msg.channel) throw new Error("O canal está inacessível.");
+  if (!pages) throw new Error("As páginas não são dadas.");
 
   let page = 0;
   const curPage = await msg.channel.send(
     pages[page].setFooter(
-      `Page ${page + 1}/${pages.length} `,
+      `Página ${page + 1}/${pages.length} `,
       msg.author.displayAvatarURL({ dynamic: true })
     )
   );
@@ -35,7 +35,7 @@ module.exports = async (
     }
     curPage.edit(
       pages[page].setFooter(
-        `Page ${page + 1}/${pages.length} `,
+        `Página ${page + 1}/${pages.length} `,
         msg.author.displayAvatarURL({ dynamic: true })
       )
     );
