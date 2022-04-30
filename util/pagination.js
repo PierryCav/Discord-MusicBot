@@ -5,8 +5,8 @@ module.exports = async (
   emojiList = ["<:stopacontra:969760296661041213>", "<:stop:969759878597980180>", "<:play:969760005106569226>"],
   timeout = 120000
 ) => {
-  if (!msg && !msg.channel) throw new Error("O canal está inacessível.");
-  if (!pages) throw new Error("As páginas não são dadas.");
+  if (!msg && !msg.channel) throw new Error("<:xXx:969761871240507442> ┃ O canal está inacessível.");
+  if (!pages) throw new Error("<:xXx:969761871240507442> ┃ As páginas não são dadas.");
 
   let page = 0;
   const curPage = await msg.channel.send(
