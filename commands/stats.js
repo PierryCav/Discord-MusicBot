@@ -5,7 +5,7 @@ const moment = require("moment");
 
 module.exports = {
   name: "stats",
-  description: "Get information about the bot",
+  description: "Obter informações sobre o bot",
   usage: "",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -31,7 +31,7 @@ module.exports = {
 
       const embed = new MessageEmbed();
       embed.setColor(client.botconfig.EmbedColor);
-      embed.setTitle(`Stats from \`${client.user.username}\``);
+      embed.setTitle(`( ℹ️ ) - Minhas Informações - \`${client.user.username}\``);
       embed.addFields(
         {
           name: ":ping_pong: Ping",
@@ -44,7 +44,7 @@ module.exports = {
           inline: true,
         },
         {
-          name: ":file_cabinet: Memory",
+          name: ":file_cabinet: Memória",
           value: `┕\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(
             2
           )}mb\``,
@@ -54,24 +54,24 @@ module.exports = {
 
       embed.addFields(
         {
-          name: ":homes: Servers",
+          name: ":homes: Servidores",
           value: `┕\`${client.guilds.cache.size}\``,
           inline: true,
         },
         {
-          name: ":busts_in_silhouette: Users",
+          name: ":busts_in_silhouette: Usuários",
           value: `┕\`${client.users.cache.size}\``,
           inline: true,
         },
         {
-          name: ":control_knobs: API Latency",
+          name: ":control_knobs: API Latência",
           value: `┕\`${message.client.ws.ping}ms\``,
           inline: true,
         }
       );
       embed.addFields(
         {
-          name: ":robot: Version",
+          name: ":robot: Versão",
           value: `┕\`v${require("../package.json").version}\``,
           inline: true,
         },
@@ -110,7 +110,7 @@ module.exports = {
 
         const embed = new MessageEmbed();
         embed.setColor(client.botconfig.EmbedColor);
-        embed.setTitle(`Stats from \`${client.user.username}\``);
+        embed.setTitle(`( ℹ️ ) - Minhas Informações - \`${client.user.username}\``);
         embed.addFields(
           {
             name: ":ping_pong: Ping",
@@ -123,7 +123,7 @@ module.exports = {
             inline: true,
           },
           {
-            name: ":file_cabinet: Memory",
+            name: ":file_cabinet: Memória",
             value: `┕\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(
               2
             )}mb\``,
@@ -133,24 +133,24 @@ module.exports = {
 
         embed.addFields(
           {
-            name: ":homes: Servers",
+            name: ":homes: Servidores",
             value: `┕\`${client.guilds.cache.size}\``,
             inline: true,
           },
           {
-            name: ":busts_in_silhouette: Users",
+            name: ":busts_in_silhouette: Usuários",
             value: `┕\`${client.users.cache.size}\``,
             inline: true,
           },
           {
-            name: ":control_knobs: API Latency",
+            name: ":control_knobs: API Latência",
             value: `┕\`${client.ws.ping}ms\``,
             inline: true,
           }
         );
         embed.addFields(
           {
-            name: ":robot: Version",
+            name: ":robot: Versão",
             value: `┕\`v${require("../package.json").version}\``,
             inline: true,
           },
