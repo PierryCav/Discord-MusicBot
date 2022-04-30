@@ -3,7 +3,7 @@ const { TrackUtils } = require("erela.js");
 
 module.exports = {
   name: "skip",
-  description: "Skip the current song",
+  description: "Pular a música atual",
   usage: "",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -22,12 +22,12 @@ module.exports = {
     if (!player)
       return client.sendTime(
         message.channel,
-        "❌ | **Nothing is playing right now...**"
+        "**( ❌ ) - Nada está tocando agora...**"
       );
     if (!message.member.voice.channel)
       return client.sendTime(
         message.channel,
-        "❌ | **You must be in a voice channel to use this command!**"
+        "**( ❌ ) - Você deve estar em um canal de voz para usar este comando!**"
       );
     if (
       message.guild.me.voice.channel &&
@@ -35,7 +35,7 @@ module.exports = {
     )
       return client.sendTime(
         message.channel,
-        ":x: | **You must be in the same voice channel as me to use this command!**"
+        "**( :x: ) - Você deve estar no mesmo canal de voz que eu para usar este comando!**"
       );
     player.stop();
     await message.react("✅");
@@ -55,7 +55,7 @@ module.exports = {
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | **You must be in a voice channel to use this command.**"
+          "**( ❌ ) - Você deve estar em um canal de voz para usar este comando.**"
         );
       if (
         guild.me.voice.channel &&
@@ -63,7 +63,7 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          ":x: | **You must be in the same voice channel as me to use this command!**"
+          "**( :x: ) - Você deve estar no mesmo canal de voz que eu para usar este comando!**"
         );
 
       const skipTo = interaction.data.options
@@ -75,16 +75,16 @@ module.exports = {
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "**( ❌ ) - Nada está tocando agora...**"
         );
       console.log(interaction.data);
       if (
         skipTo !== null &&
         (isNaN(skipTo) || skipTo < 1 || skipTo > player.queue.length)
       )
-        return client.sendTime(interaction, "❌ | **Invalid number to skip!**");
+        return client.sendTime(interaction, "**( ❌ ) - Número inválido para pular!**");
       player.stop(skipTo);
-      client.sendTime(interaction, "**Skipped!**");
+      client.sendTime(interaction, "**Ignorado!**");
     },
   },
 };
