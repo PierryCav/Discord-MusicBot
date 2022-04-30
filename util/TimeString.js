@@ -55,7 +55,7 @@ function parseTimestring(string, returnUnit, opts) {
     .match(/[-+]?[0-9.]+[a-z]+/g);
 
   if (groups === null) {
-    throw new Error(`The string [${string}] could not be parsed by timestring`);
+    throw new Error(`A corda [${string}] não pôde ser analisado por timestring`);
   }
 
   groups.forEach((group) => {
@@ -109,7 +109,7 @@ function getUnitKey(unit) {
     }
   }
 
-  throw new Error(`The unit [${unit}] is not supported by timestring`);
+  throw new Error(`A unidade [${unit}] não é suportado por timestring`);
 }
 
 /**
