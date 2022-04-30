@@ -3,8 +3,8 @@ const { TrackUtils, Player } = require("erela.js");
 
 module.exports = {
   name: "skipto",
-  description: `Skip to a song in the queue`,
-  usage: "<number>",
+  description: `Pular para uma música na fila`,
+  usage: "<número>",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
     member: [],
@@ -28,12 +28,12 @@ module.exports = {
     if (!player)
       return client.sendTime(
         message.channel,
-        "❌ | **Nothing is playing right now...**"
+        "**( ❌ ) - Nada está tocando agora...**"
       );
     if (!message.member.voice.channel)
       return client.sendTime(
         message.channel,
-        "❌ | **You must be in a voice channel to use this command!**"
+        "**( ❌ ) - Você deve estar em um canal de voz para usar este comando!**"
       );
     if (
       message.guild.me.voice.channel &&
@@ -41,20 +41,20 @@ module.exports = {
     )
       return client.sendTime(
         message.channel,
-        ":x: | **You must be in the same voice channel as me to use this command!**"
+        "**( :x: ) - Você deve estar no mesmo canal de voz que eu para usar este comando!**"
       );
 
     try {
       if (!args[0])
         return client.sendTime(
           message.channel,
-          `**Usage**: \`${GuildDB.prefix}skipto [number]\``
+          `****( ℹ️ ) - Use:**: \`${GuildDB.prefix}skipto [número]\``
         );
       //if the wished track is bigger then the Queue Size
       if (Number(args[0]) > player.queue.size)
         return client.sendTime(
           message.channel,
-          `❌ | That song is not in the queue! Please try again!`
+          `**( ❌ ) - Essa música não está na fila! Please try again!`
         );
       //remove all tracks to the jumped song
       player.queue.remove(0, Number(args[0]) - 1);
@@ -63,7 +63,7 @@ module.exports = {
       //Send Success Message
       return client.sendTime(
         message.channel,
-        `⏭ Skipped \`${Number(args[0] - 1)}\` songs`
+        `**( ⏩ ) - Ignorado \`${Number(args[0] - 1)}\` Músicas`
       );
     } catch (e) {
       console.log(String(e.stack).bgRed);
@@ -77,7 +77,7 @@ module.exports = {
         value: "[position]",
         type: 4,
         required: true,
-        description: "Skips to a specific song in the queue",
+        description: "Salta para uma música específica na fila",
       },
     ],
     /**
@@ -95,7 +95,7 @@ module.exports = {
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | **You must be in a voice channel to use this command.**"
+          "**( ❌ ) - Você deve estar em um canal de voz para usar este comando.**"
         );
       if (
         guild.me.voice.channel &&
@@ -109,7 +109,7 @@ module.exports = {
       if (!CheckNode || !CheckNode.connected) {
         return client.sendTime(
           interaction,
-          "❌ | **Lavalink node not connected**"
+          "**( ❌ ) - Nó Lavalink não conectado**"
         );
       }
 
@@ -124,7 +124,7 @@ module.exports = {
         if (!interaction.data.options)
           return client.sendTime(
             interaction,
-            `**Usage**: \`${GuildDB.prefix}skipto <number>\``
+            `**( ℹ️ ) - Use**: \`${GuildDB.prefix}skipto <número>\``
           );
         let skipTo = interaction.data.options[0].value;
         //if the wished track is bigger then the Queue Size
@@ -134,18 +134,18 @@ module.exports = {
         )
           return client.sendTime(
             interaction,
-            `❌ | That song is not in the queue! Please try again!`
+            `**( ❌ ) - Essa música não está na fila! Por favor, tente novamente!`
           );
 
         player.stop(skipTo);
         //Send Success Message
         return client.sendTime(
           interaction,
-          `⏭ Skipped \`${Number(skipTo)}\` songs`
+          `**( ⏩ ) - Ignorado  \`${Number(skipTo)}\` músicas`
         );
       } catch (e) {
         console.log(String(e.stack).bgRed);
-        client.sendError(interaction, "Something went wrong.");
+        client.sendError(interaction, "Algo deu errado.");
       }
     },
   },
