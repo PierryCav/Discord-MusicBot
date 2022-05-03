@@ -52,7 +52,7 @@ module.exports = async (client, oldState, newState) => {
       if (stateChange.members.size === 1 && player.paused) {
         let emb = new MessageEmbed()
           .setColor(client.botconfig.EmbedColor)
-          .setDescription(`**Voltando reprodução de música.**`
+          .setDescription(`**Voltando a reprodução de música.**`
           );
         await client.channels.cache.get(player.textChannel).send(emb);
 
