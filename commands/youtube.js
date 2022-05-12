@@ -17,10 +17,12 @@ module.exports = {
    * @param {*} param3
    */
   run: async (client, message, args, { GuildDB }) => {
-    if (!message.member.voice.channel)
+    let embederro = MessageEmbed()
+.setDescription(`**<:no:974449268620414996>・Você deve estar em um canal de voz!**`)
+.setColor("2F3136")
+if (!message.member.voice.channel)
       return client.sendTime(
-        message.channel,
-        "**( ❌ ) - Você deve estar em um canal de voz para tocar algo!**"
+        message.channel,embederro
       );
     if (
       !message.member.voice.channel
