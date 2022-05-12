@@ -51,10 +51,9 @@ module.exports = async (client, oldState, newState) => {
     case "JOIN":
       if (stateChange.members.size === 1 && player.paused) {
         let emb = new MessageEmbed()
-          .setAuthor(`Retomando a fila pausada`, client.botconfig.IconURL)
           .setColor(client.botconfig.EmbedColor)
           .setDescription(
-            `Retomando a reprodução porque todos vocês me deixaram com música para tocar sozinho`
+            `**<:play:974446512757170206>・Voltando a tocar a música que estava tocando antes.**`
           );
         await client.channels.cache.get(player.textChannel).send(emb);
 
@@ -72,9 +71,8 @@ module.exports = async (client, oldState, newState) => {
         player.pause(true);
 
         let emb = new MessageEmbed()
-          .setAuthor(`Pausado!`, client.botconfig.IconURL)
           .setColor(client.botconfig.EmbedColor)
-          .setDescription(`O player foi pausado porque todos saíram`);
+          .setDescription(`**<:paused:974447180733632563>・A música que eu estava tocando foi pausada, porque todas pessoas que estava juntam comigo na call saíram!**`);
         await client.channels.cache.get(player.textChannel).send(emb);
       }
       break;
