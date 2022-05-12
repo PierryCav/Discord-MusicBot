@@ -29,9 +29,11 @@ if (!message.member.voice.channel)
         .permissionsFor(message.guild.me)
         .has("CREATE_INSTANT_INVITE")
     )
+let embedpermer = MessageEmbed()
+.setDescription(`**<:no:974449268620414996>・Eu preciso da permissão \`Criar Convites\` para executar esse comando!**`)
+.setColor("2F3136")
       return client.sendTime(
-        message.channel,
-        "**( ❌ ) - O bot não tem permissão para criar convite**"
+        message.channel,embedpermer
       );
 
     let Invite = await message.member.voice.channel.activityInvite(
